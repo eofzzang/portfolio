@@ -25,7 +25,7 @@
 
 <div class="layer">
 <span class="content">	
-<h1> 앗! 빠른 시일내로 수정하겠습니다..</h1>
+<h1> 앗! 빠른 시일내로 수정하겠습니다......</h1>
 <img src="https://t1.daumcdn.net/cfile/blog/24775D5058AFA70F37"/>
 </span>
 <span class="b"></span>
