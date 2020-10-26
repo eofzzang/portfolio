@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="org.gasan.mapper.SeatServiceMapper">
+ 
+<select id="showTotalSeat" resultType="int">
+
+<![CDATA[
+select count(*) from seat
+]]>
+
+</select>
+
+<select id="showRemainedSeat" resultType="int">
+
+<![CDATA[
+select count(*) from seat where enabled = 'Y' and scheduleCode = #{scheduleCode} 
+]]>
+
+</select>
+
+<select id="showEnabledSeat" resultType="org.gasan.domain.SeatVO">
+
+<![CDATA[
+select seat from seat where enabled = 'N' and scheduleCode = #{scheduleCode} 
+]]>
+
+</select>
+
+<update id="reserveSeat">
+
+<![CDATA[
+
+update seat set enabled = 'N' where schedulecode = #{reservation.scheduleCode} and seat = #{seat.seat}
+
+]]>
+
+</update>
+
+<update id="reserveSeatCancel">
+
+<![CDATA[
+
+update seat set enabled = 'Y' where schedulecode = #{reservation.scheduleCode} and seat = #{seat.seat}
+
+]]>
+
+</update>
+ 
+ 
+ </mapper>

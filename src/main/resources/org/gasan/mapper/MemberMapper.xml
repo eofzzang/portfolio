@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.gasan.mapper.MemberMapper">
+
+	<resultMap type="org.gasan.domain.MemberVO" id="memberMap">
+		<id property="userid" column="userid" />
+		<result property="userid" column="userid" />
+		<result property="userpw" column="userpw" />
+		<result property="userName" column="username" />
+		<result property="userGender" column="usergender" />
+		<result property="userBirth" column="userbirth" />
+		<result property="userPhone" column="userphone" />
+		<result property="userEmail" column="useremail" />
+		<result property="userGenre" column="userGenre" />
+		<result property="regDate" column="regdate" />
+		<result property="updateDate" column="updatedate" />
+		<result property="enabled" column="enabled" />
+		<result property="userCertification" column="userCertification" />
+		
+
+		<collection property="authList" resultMap="authMap">
+		</collection>
+	</resultMap>
+
+	<resultMap type="org.gasan.domain.AuthVO" id="authMap">
+		<result property="userid" column="userid" />
+		<result property="auth" column="auth" />
+	</resultMap>
+
+
+	<select id="read" resultMap="memberMap">
+		SELECT
+		mem.userid, userpw, userName,
+		usergender, userbirth, userphone, useremail, userGenre, enabled,
+		regdate, updatedate, userCertification, auth
+		FROM
+		tbl_member mem LEFT OUTER JOIN
+		tbl_member_auth auth on mem.userid =
+		auth.userid
+		WHERE mem.userid =
+		#{userid}
+	</select>
+
+	<!-- 등록 (회원) -->
+	<insert id="createMember">
+		insert into tbl_member (
+		USERID, USERPW, USERNAME,
+		USERGENDER, USERBIRTH, USERPHONE, USEREMAIL,
+		USERGENRE, REGDATE,
+		UPDATEDATE, ENABLED, userCertification)
+		VALUES(#{userid}, #{userpw},
+		#{userName}, #{userGender}, #{userBirth}, #{userPhone},
+		#{userEmail},
+		#{userGenre}, SYSDATE, SYSDATE, '1', '0')
+	</insert>
+
+	<!-- 등록 (회원권한) -->
+	<insert id="createMemberAuth">
+		insert into tbl_member_auth (userid, auth)
+		values
+		(#{userid}, 'ROLE_USER')
+	</insert>
+
+
+	<!-- 아이디 중복 체크 -->
+	<select id="idChk" resultType="int">
+		SELECT count(*) FROM tbl_member
+		WHERE USERID = #{userid}
+	</select>
+
+	<!-- 메일 인증키 -->
+	<insert id="createAuthKey">
+		insert into userAuth values(#{userEmail}, #{authKey})
+	</insert>
+
+	<!-- 메일 인증 -->
+	<update id="userAuth">
+	<![CDATA[
+	update tbl_member set userCertification = 1 
+	where (select count(*) 
+	from userAuth 
+	where userEmail = #{userEmail}) > 0]]>
+	</update>
+	
+	<!-- 회원탈퇴 -->
+	<delete id="memberDelete">
+	DELETE FROM TBL_MEMBER
+	WHERE USERID = #{userid}
+	AND USERPW = #{userpw}
+	</delete>
+	
+	
+	<!--  회원정보 수정 -->
+	<update id="memberUpdate">
+		UPDATE tbl_member SET
+		USERPW = #{userpw},
+		userphone = #{userPhone},
+		userbirth = #{userBirth},
+		USERGENRE = #{userGenre}
+		WHERE USERID = #{userid}
+	</update>
+	
+	
+</mapper>

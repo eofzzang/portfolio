@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.gasan.mapper.ScheduleListMapper">
+
+<resultMap type="org.gasan.domain.ScheduleVO" id="Schedule">
+<result column="scheduleCode" property="scheduleCode" javaType="int"/>
+<result column="theaterCode" property="theaterCode" javaType="int"/>
+<result column="movieCode" property="movieCode" javaType="int"/>
+<result column="playDate" property="playDate" javaType="String"/>
+<result column="startTime" property="startTime" javaType="String"/>
+<result column="endTime" property="endTime" javaType="String"/>
+<result column="poster" property="poster" javaType="String"/>
+</resultMap>
+
+<resultMap type="org.gasan.domain.TheaterVO" id="Theater">
+<result property="theaterCode" column="theaterCode" javaType="int"/>
+<result property="totalSeatCount" column="totalSeatCount" javaType="int"/>
+<result property="currentSeatCount" column="currentSeatCount" javaType="int"/>
+</resultMap>
+
+<resultMap type="org.gasan.domain.MovieVO" id="Movie">
+<result property="movieCode" column="movieCode" javaType="int"/>
+<result property="movieName" column="movieName" javaType="String"/>
+<result property="genre" column="genre" javaType="String"/>
+<result property="director" column="director" javaType="String"/>
+<result property="openDate" column="openDate" javaType="String"/>
+<result property="showTime" column="showTime" javaType="String"/>
+<result property="nationName" column="nationName" javaType="String"/>
+<result property="grade" column="grade" javaType="String"/>
+<result property="poster" column="poster" javaType="String"/>
+<result property="intro" column="intro" javaType="String"/>
+<result property="regDate" column="regDate"/>
+</resultMap>
+
+
+
+	<select id="getScheduleListByDate" resultType="org.gasan.domain.ScheduleVO">
+  <![CDATA[
+    select schedulecode, schedule.theatercode, movie.moviename, movie.movieCode, playdate, starttime, endtime, poster
+from schedule inner join theater on schedule.theatercode= theater.theatercode 
+inner join movie on schedule.moviecode = movie.moviecode
+where playdate = #{date} 
+order by starttime
+]]>
+	</select>
+
+	<select id="getScheduleListByName"
+		resultType="org.gasan.domain.ScheduleVO">
+	<![CDATA[
+	select schedulecode, schedule.theatercode, movie.moviename, movie.movieCode, playdate, starttime, endtime, poster
+    from schedule inner join theater on schedule.theatercode= theater.theatercode 
+    inner join movie on schedule.moviecode = movie.moviecode
+    where movieName = #{movieName} order by playdate
+	]]>
+
+	</select>
+
+	<select id="getScheduleListByAll"
+		resultType="org.gasan.domain.ScheduleVO">
+  <![CDATA[
+select schedulecode, schedule.theatercode, movie.moviename, movie.movieCode, playdate, starttime, endtime, poster
+from schedule inner join theater on schedule.theatercode= theater.theatercode 
+inner join movie on schedule.moviecode = movie.moviecode
+where playdate = #{date} and movieName = #{movieName} order by starttime
+]]>
+	</select>
+
+</mapper>

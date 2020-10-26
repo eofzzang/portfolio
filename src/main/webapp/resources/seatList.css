@@ -1,0 +1,179 @@
+@charset "UTF-8";
+div.seatRow {
+	position: relative;
+}
+
+div.seatRow button {
+	cursor: pointer;
+	background-color: lightgray;
+	position: absolute;
+	padding: 2px;
+	width: 25px;
+	height: 25px;
+}
+
+div.seatRow button:hover {
+	background-color: crimson;
+}
+
+button {
+	cursor: pointer;
+}
+
+div.seatRow button.represent {
+	background-color: lightgray;
+}
+
+li.theaterInfo {
+	margin-bottom: 10px;
+}
+
+button.selectedSeat {
+	margin: 5px;
+	float: left;
+	width: 50px;
+	height: 50px;
+}
+
+/* row button start */
+button.row-A {
+	top: 120px;
+}
+
+button.row-B {
+	top: 150px;
+}
+
+button.row-C {
+	top: 180px;
+}
+
+button.row-D {
+	top: 210px;
+}
+
+button.row-E {
+	top: 240px;
+}
+
+button.row-F {
+	top: 270px;
+}
+
+button.row-G {
+	top: 300px;
+}
+
+button.row-H {
+	top: 330px;
+}
+
+button.row-I {
+	top: 360px;
+}
+
+button.row-J {
+	top: 390px;
+}
+
+button.row-K {
+	top: 420px;
+}
+
+button.row-L {
+	top: 450px;
+}
+
+/* col button start */
+button.col-1 {
+	left: 120px;
+}
+
+button.col-2 {
+	left: 150px;
+}
+
+button.col-3 {
+	left: 160px;
+}
+
+button.col-4 {
+	left: 190px;
+}
+
+button.col-5 {
+	left: 220px;
+}
+
+button.col-6 {
+	left: 250px;
+}
+
+button.col-7 {
+	left: 280px;
+}
+
+button.col-8 {
+	left: 310px;
+}
+
+button.col-9 {
+	left: 340px;
+}
+
+button.col-10 {
+	left: 370px;
+}
+
+button.col-11 {
+	left: 400px;
+}
+
+button.col-12 {
+	left: 430px;
+}
+
+button.col-13 {
+	left: 460px;
+}
+
+button.col-14 {
+	left: 490px;
+}
+
+button.col-15 {
+	left: 520px;
+}
+
+button.col-16 {
+	left: 550px;
+}
+
+button.col-17 {
+	left: 580px;
+}
+
+.movieInfo {
+	color: white;
+}
+
+body {
+	margin-bottom: 500px;
+}
+
+div.selectType button {
+	outline: none;
+	cursor: pointer;
+	border: solid 1px gray;
+}
+
+div.seatRow button.selected {
+	background-color: crimson;
+	outline: none;
+}
+
+div.seatRow button.reserved {
+	cursor: default !important;
+	outline: none;
+	background-color: rgb(21, 21, 21) !important;
+}

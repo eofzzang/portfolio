@@ -1,0 +1,71 @@
+.container {
+    padding: 250px 0 0 0;
+    margin : 0 auto;
+    width: 900px;  
+}
+
+fieldset{
+    margin: 0 auto;
+}
+
+.nav-item{
+
+    font-size: 15px;
+}
+
+.container_inner{
+   
+    width: 900px;
+    height: 300px;
+    margin-left: 510px; 
+   
+}
+
+.login_box{
+    margin-top: 30px;
+    width: 450px;
+    height: 250px;
+    float: left;
+
+}
+
+.login_box input{ 
+    vertical-align:-3px; 
+    
+}
+
+
+
+.login_menu {
+    margin: 12px 3px 0 0;
+    float: right;
+    width: 225px;
+    height: 30px;
+}
+
+
+.ad_box{
+    
+    width: 415px;
+    height: 250px;
+    margin-left: 475px;
+    
+}
+.ad_box img{
+    margin-top: 25px;
+    width: 415px;
+    height: 250px;
+}
+
+#naver_id_login{
+
+    margin: 80px 10px 0 0;
+}
+
+a{
+	
+    font-weight: 600;
+    color: gray;
+}
+
+

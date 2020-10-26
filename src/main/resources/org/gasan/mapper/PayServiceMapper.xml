@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.gasan.mapper.PayServiceMapper">
+
+
+	<insert id="registPaymentHistory">
+  
+  <![CDATA[
+	insert into paymentHistory values(
+	#{imp_uid}, #{merchant_uid}, reservation_seq.nextval, #{userId}, #{schedule.selectedMovie},
+	#{schedule.selectedTheaterNumber}, #{schedule.selectedDate}, #{schedule.selectedStartTime}, #{schedule.selectedEndTime}, #{seat.adultType}, #{seat.youthType}, #{seat.preferentialType}, #{seatList}, #{seat.payAmount}, sysdate
+	)
+  ]]>
+
+	</insert>
+	
+	<select id="checkPaymentNumber" resultType="int">
+	select count(*) from paymenthistory where paymentNumber = #{paymentNumber}
+	</select>
+
+
+</mapper>

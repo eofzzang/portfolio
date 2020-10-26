@@ -1,0 +1,61 @@
+a{
+    font-weight: 600;
+    color: darkgray;
+}
+
+.nav_container{
+    padding: 200px 0 0 0;
+    margin : 0 auto;
+    width: 900px;
+    
+}
+
+.nav-item{
+
+    font-size: 15px;
+}
+
+fieldset{
+    margin: 0 auto;
+    clear: both;
+}
+
+.btn-dark{
+    height: 40px;
+    
+}
+
+
+.container {
+    padding: 200px 0 0 0;
+    margin : 0 auto;
+    width: 900px;  
+}
+
+.col-form-label {
+    font-size: 16px;
+}
+
+
+.buttonbox{
+    margin-top: 50px;
+    width: 900px;
+    height: 150px;
+    clear: both;
+}
+
+.col-sm-10 input { 
+    vertical-align:-2px; 
+}
+
+.table-active{
+    vertical-align : middle;
+    text-align: center;
+}
+
+.table td{
+    margin-top: 0px;
+    vertical-align : middle;
+    text-align: center;
+}
+
